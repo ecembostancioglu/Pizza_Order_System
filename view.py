@@ -1,7 +1,6 @@
 from tkinter import *
 from PIL import Image,ImageTk
 
-
 from pizza_types.klasik_pizza import KlasikPizza
 from pizza_types.margarita_pizza import MargaritaPizza
 from pizza_types.sade_pizza import SadePizza
@@ -15,6 +14,7 @@ form.resizable(False,False)
 
 menu_title=Label(form,text='Pizza Dünyasına Hoşgeldiniz',fg='darkred',font='Times 18 bold italic')
 pizza_secimi=Label(form,text='Lütfen Bir Pizza Tabanı Seçiniz',font='Times 14 italic')
+
 
 
 
