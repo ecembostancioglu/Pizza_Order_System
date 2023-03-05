@@ -1,4 +1,5 @@
 class Pizza:
+
     def __init__(self,isim,aciklama,fiyat):
         self.isim=isim
         self.aciklama=aciklama

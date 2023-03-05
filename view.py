@@ -1,11 +1,14 @@
 from tkinter import *
 from PIL import Image,ImageTk
+from main import main
 
 from pizza_types.klasik_pizza import KlasikPizza
 from pizza_types.margarita_pizza import MargaritaPizza
 from pizza_types.sade_pizza import SadePizza
 from pizza_types.turk_pizza import TurkPizza
 
+
+main()
 
 form = Tk()
 form.title('Pizza Dünyası')
