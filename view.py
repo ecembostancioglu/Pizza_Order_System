@@ -78,6 +78,45 @@ pizza4_aciklama=Label(form,text=turk.aciklama,font='Times 12 italic',fg='black')
 pizza4_fiyat=Label(form,text=turk.fiyat,font='Times 12 italic',fg='black').place(x=530,y=290)
 
 
+pizza_secimi=Label(form,text='Lütfen Bir Pizza Sosu Seçiniz',font='Times 14 italic').place(x=230,y=350)
+
+sos_1=Image.open('images/zeytin.png')
+sos1_resize=sos_1.resize((120,80))
+zeytin=ImageTk.PhotoImage(sos1_resize)
+label5=Label(form,image=zeytin).place(x=100,y=400)
+
+
+sos_2=Image.open('images/mantarlar.png')
+sos2_resize=sos_2.resize((120,80))
+mantar=ImageTk.PhotoImage(sos2_resize)
+label6=Label(form,image=mantar).place(x=300,y=400)
+
+
+sos_3=Image.open('images/peynir.png')
+sos3_resize=sos_3.resize((120,80))
+peynir=ImageTk.PhotoImage(sos3_resize)
+label7=Label(form,image=peynir).place(x=500,y=400)
+
+
+sos_4=Image.open('images/et.png')
+sos4_resize=sos_4.resize((120,80))
+et=ImageTk.PhotoImage(sos4_resize)
+label8=Label(form,image=et).place(x=100,y=500)
+
+
+sos_5=Image.open('images/sogan.png')
+sos5_resize=sos_5.resize((120,80))
+sogan=ImageTk.PhotoImage(sos5_resize)
+label9=Label(form,image=sogan).place(x=300,y=500)
+
+
+sos_6=Image.open('images/misir.png')
+sos6_resize=sos_6.resize((120,80))
+misir=ImageTk.PhotoImage(sos6_resize)
+label10=Label(form,image=misir).place(x=500,y=500)
+
+
+
 
 
 form.mainloop()
