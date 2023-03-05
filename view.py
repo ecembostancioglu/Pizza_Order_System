@@ -1,10 +1,11 @@
 from tkinter import *
 from PIL import Image,ImageTk
 
-from klasik_pizza import KlasikPizza
-from margarita_pizza import MargaritaPizza
-from sade_pizza import SadePizza
-from turk_pizza import TurkPizza
+
+from pizza_types.klasik_pizza import KlasikPizza
+from pizza_types.margarita_pizza import MargaritaPizza
+from pizza_types.sade_pizza import SadePizza
+from pizza_types.turk_pizza import TurkPizza
 
 
 form = Tk()
@@ -69,10 +70,9 @@ label4=Label(form,image=pizza4).place(x=410,y=220)
 
 turk=TurkPizza(isim='Türk Pizza',aciklama='Peynir ve Sucuklu Pizza',fiyat='400 TL')
 
-pizza3_isim=Label(form,text=turk.isim,font='Times 14 bold italic',fg='darkred').place(x=530,y=240)
+pizza4_isim=Label(form,text=turk.isim,font='Times 14 bold italic',fg='darkred').place(x=530,y=240)
 pizza4_aciklama=Label(form,text=turk.aciklama,font='Times 12 italic',fg='black').place(x=530,y=265)
 pizza4_fiyat=Label(form,text=turk.fiyat,font='Times 12 italic',fg='black').place(x=530,y=290)
-
 
 
 
