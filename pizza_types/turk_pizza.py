@@ -3,5 +3,5 @@ from pizza_class import Pizza
 
 class TurkPizza(Pizza):
     
-    def __init__(self, isim, aciklama, fiyat):
-        super().__init__(isim, aciklama, fiyat)
+    def __init__(self, name, description, price):
+        super().__init__(name, description, price)

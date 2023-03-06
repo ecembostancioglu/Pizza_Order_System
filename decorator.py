@@ -3,9 +3,9 @@ from pizza_class import Pizza
 
 class Decorator:
 
-    def __init__(self,isim,fiyat):
-        self.isim=isim
-        self.fiyat=fiyat
+    def __init__(self,name,price):
+        self.name=name
+        self.price=price
     
 
     def get_cost(self):

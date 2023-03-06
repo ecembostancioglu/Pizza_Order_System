@@ -1,7 +1,7 @@
 from decorator import Decorator
 
 
-class Misir(Decorator):
+class Corn(Decorator):
     
-    def __init__(self, isim, fiyat):
-        super().__init__(isim, fiyat)
+    def __init__(self, name, price):
+        super().__init__(name, price)
