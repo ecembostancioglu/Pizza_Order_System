@@ -5,6 +5,8 @@ from pizza_types.klasik_pizza import KlasikPizza
 from pizza_types.margarita_pizza import MargaritaPizza
 from pizza_types.sade_pizza import SadePizza
 from pizza_types.turk_pizza import TurkPizza
+from sauce_types.cheese import Peynir
+from sauce_types.mushroom import Mantar
 from sauce_types.olive import Zeytin
 
 
@@ -89,7 +91,6 @@ zeytin_image=ImageTk.PhotoImage(sos1_resize)
 label5=Label(form,image=zeytin_image).place(x=50,y=400)
 
 zeytin=Zeytin(isim='Zeytin',fiyat='10 TL')
-
 zeytin_isim=Label(form,text=zeytin.isim,font='Times 12 italic',fg='black').place(x=175,y=420)
 zeytin_fiyat=Label(form,text=zeytin.fiyat,font='Times 12 italic',fg='black').place(x=175,y=440)
 
@@ -98,14 +99,23 @@ zeytin_fiyat=Label(form,text=zeytin.fiyat,font='Times 12 italic',fg='black').pla
 sos_2=Image.open('images/mantarlar.png')
 sos2_resize=sos_2.resize((120,80))
 mantar_image=ImageTk.PhotoImage(sos2_resize)
-label6=Label(form,image=mantar_image).place(x=300,y=400)
+label6=Label(form,image=mantar_image).place(x=275,y=400)
+
+mantar=Mantar(isim='Mantarlar',fiyat='40 TL')
+mantar_isim=Label(form,text=mantar.isim,font='Times 12 italic',fg='black').place(x=400,y=420)
+mantar_fiyat=Label(form,text=mantar.fiyat,font='Times 12 italic',fg='black').place(x=400,y=440)
 
 
 
 sos_3=Image.open('images/peynir.png')
 sos3_resize=sos_3.resize((120,80))
 peynir_image=ImageTk.PhotoImage(sos3_resize)
-label7=Label(form,image=peynir_image).place(x=525,y=400)
+label7=Label(form,image=peynir_image).place(x=500,y=400)
+
+peynir=Peynir(isim='Keçi Peyniri',fiyat='50 TL')
+peynir_isim=Label(form,text=peynir.isim,font='Times 12 italic',fg='black').place(x=625,y=420)
+peynir_fiyat=Label(form,text=peynir.fiyat,font='Times 12 italic',fg='black').place(x=625,y=440)
+
 
 
 sos_4=Image.open('images/et.png')
@@ -117,7 +127,7 @@ label8=Label(form,image=et_image).place(x=100,y=550)
 sos_5=Image.open('images/sogan.png')
 sos5_resize=sos_5.resize((120,80))
 sogan_image=ImageTk.PhotoImage(sos5_resize)
-label9=Label(form,image=sogan_image).place(x=300,y=550)
+label9=Label(form,image=sogan_image).place(x=275,y=550)
 
 
 sos_6=Image.open('images/misir.png')
