@@ -3,7 +3,6 @@ from pizza_class import Pizza
 
 class Decorator:
 
-
     def __init__(self,isim,fiyat):
         self.isim=isim
         self.fiyat=fiyat
