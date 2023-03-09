@@ -43,8 +43,12 @@ classic=ClassicPizza()
 pizza1_description=Label(form,text=classic.description,font='Times 12 italic',fg='black').place(x=160,y=125)
 pizza1_price=Label(form,text=classic.price,font='Times 12 italic',fg='black').place(x=160,y=150)
 
-button1=Button(form,text='+',background='green',padx=10,command=lambda:select_pizza(classic)).place(x=220,y=150)
+var1 = IntVar()
+var2 = IntVar()
+var3 = IntVar()
+var4 = IntVar()
 
+button1=Checkbutton(form,text='Ekle',variable=var1,onvalue=1,offvalue=0,command=lambda:select_pizza(classic)).place(x=220,y=150)
 
 
 margherita_pizza=Image.open('images/margherita_pizza.png')
@@ -57,7 +61,7 @@ margherita=MargheritaPizza()
 pizza2_description=Label(form,text=margherita.description,font='Times 12 italic',fg='black').place(x=530,y=125)
 pizza2_price=Label(form,text=margherita.price,font='Times 12 italic',fg='black').place(x=530,y=150)
 
-button2=Button(form,text='+',background='green',padx=10,command=lambda:select_pizza(margherita)).place(x=590,y=150)
+button2=Checkbutton(form,text='Ekle',variable=var2,onvalue=1,offvalue=0,command=lambda:select_pizza(margherita)).place(x=590,y=150)
 
 
 base_pizza=Image.open('images/base_pizza.png')
@@ -70,7 +74,7 @@ base=BasePizza()
 pizza3_description=Label(form,text=base.description,font='Times 12 italic',fg='black').place(x=160,y=265)
 pizza3_price=Label(form,text=base.price,font='Times 12 italic',fg='black').place(x=160,y=290)
 
-button3=Button(form,text='+',background='green',padx=10,command=lambda:select_pizza(base)).place(x=220,y=290)
+button3=Checkbutton(form,text='Ekle',variable=var3,onvalue=1,offvalue=0,command=lambda:select_pizza(base)).place(x=220,y=290)
 
 
 turkish_pizza=Image.open('images/turkish_pizza.png')
@@ -83,22 +87,23 @@ turkish=TurkishPizza()
 pizza4_description=Label(form,text=turkish.description,font='Times 12 italic',fg='black').place(x=530,y=265)
 pizza4_price=Label(form,text=turkish.price,font='Times 12 italic',fg='black').place(x=530,y=290)
 
-button4=Button(form,text='+',background='green',padx=10,command=lambda:select_pizza(turkish)).place(x=590,y=290)
+button4=Checkbutton(form,text='Ekle',variable=var4,onvalue=1,offvalue=0,command=lambda:select_pizza(turkish)).place(x=590,y=290)
 
 selected_pizza=Pizza()
 
 
 def select_pizza(selected_pizza):
-    if selected_pizza==classic:
-        print(str(selected_pizza.get_description()), int(selected_pizza.get_cost()))
-    elif selected_pizza==margherita:
-         print(str(selected_pizza.get_description()),int(selected_pizza.get_cost()))
-    elif selected_pizza==base:
-         print(str(selected_pizza.get_description()),int(selected_pizza.get_cost()))
-    elif  selected_pizza==turkish:
-        print(str(selected_pizza.get_description()),int(selected_pizza.get_cost()))
-    else:
-        print('Lütfen bir seçim yapınız')
+    if var1.get()==1 | var2.get()==1 | var3.get()==1 | var4.get()==1:
+        if selected_pizza==classic:
+            print(str(selected_pizza.get_description()), int(selected_pizza.get_cost()))
+        elif selected_pizza==margherita:
+            print(str(selected_pizza.get_description()),int(selected_pizza.get_cost()))
+        elif selected_pizza==base:
+            print(str(selected_pizza.get_description()),int(selected_pizza.get_cost()))
+        elif selected_pizza==turkish:
+            print(str(selected_pizza.get_description()),int(selected_pizza.get_cost()))
+        else:
+            print('Lütfen bir seçim yapınız')
 
 pizza_sauce_selection=Label(form,text='Lütfen Bir Pizza Sosu Seçiniz',font='Times 12 italic').place(x=270,y=350)
 
