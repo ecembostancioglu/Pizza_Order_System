@@ -2,7 +2,8 @@ from decorator import Decorator
 
 
 class Onion(Decorator):
-     def __init__(self):
-        super().__init__()
-        self.description='Soğan'
-        self.price=7
+    
+     def __init__(self,component):
+      super().__init__(component,description='Soğan',price=7)
+      
+

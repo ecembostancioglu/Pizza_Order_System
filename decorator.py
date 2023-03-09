@@ -1,18 +1,18 @@
 from pizza_class import Pizza
 
 
-class Decorator:
+class Decorator(Pizza):
 
-    def __init__(self,component):
-        super().__init__()
+    def __init__(self,component,description,price):
         self.component=component
+        self.description=description
+        self.price=price
+        Pizza.__init__(self,description,price)
     
 
     def get_cost(self):
-       return self.component.get_cost() + \
-         Pizza.get_cost(self)
+       return str(Pizza.get_cost(self))
 
 
     def get_description(self):
-       return self.component.get_description() + \
-         ' ' + Pizza.get_description(self)
+       return str(Pizza.get_description(self))
