@@ -106,11 +106,6 @@ def select_pizza(selected_pizza):
 
 pizza_sauce_selection=Label(form,text='Lütfen Bir Pizza Sosu Seçiniz',font='Times 12 italic').place(x=270,y=350)
 
-sauce_1=Image.open('images/olive.png')
-sauce1_resize=sauce_1.resize((120,80))
-olive_image=ImageTk.PhotoImage(sauce1_resize)
-label5=Label(form,image=olive_image).place(x=50,y=400)
-
 selected_sauce=Decorator(selected_pizza,selected_pizza.get_description(),selected_pizza.get_cost())
 
 def add_sauce(selected_sauce):
@@ -129,13 +124,18 @@ def add_sauce(selected_sauce):
    else:
        print('Lütfen bir seçim yapınız')
 
+sauce_1=Image.open('images/olive.png')
+sauce1_resize=sauce_1.resize((120,80))
+olive_image=ImageTk.PhotoImage(sauce1_resize)
+label5=Label(form,image=olive_image).place(x=50,y=400)
+
 olive=Olive(selected_sauce)
 
 olive_description=Label(form,text=olive.description,font='Times 12 italic',fg='black').place(x=175,y=420)
-olive_price=Label(form,text=olive.price,font='Times 12 italic',fg='black').place(x=175,y=440)
+olive_price=Label(form,text=f'{olive.price} TL',font='Times 12 italic',fg='black').place(x=175,y=440)
 
-button5=Checkbutton(form,text=f'{olive.price} TL',variable=int_vars[4],onvalue=1,offvalue=0,
-               command=lambda:add_sauce(olive)).place(x=180,y=465)
+button5=Checkbutton(form,variable=int_vars[4],onvalue=1,offvalue=0,
+               command=lambda:add_sauce(olive)).place(x=225,y=440)
 
 sauce_2=Image.open('images/mushroom.png')
 sauce2_resize=sauce_2.resize((120,80))
@@ -146,9 +146,9 @@ label6=Label(form,image=mushroom_image).place(x=275,y=400)
 mushroom=Mushroom(selected_sauce)
 
 mushroom_description=Label(form,text=mushroom.description,font='Times 12 italic',fg='black').place(x=400,y=420)
-mushroom_price=Label(form,text=mushroom.price,font='Times 12 italic',fg='black').place(x=400,y=440)
+mushroom_price=Label(form,text=f'{mushroom.price} TL',font='Times 12 italic',fg='black').place(x=400,y=440)
 
-button6=Checkbutton(form,text=f'{mushroom.price} TL',variable=int_vars[5],onvalue=1,offvalue=0,command=lambda:add_sauce(mushroom)).place(x=405,y=465)
+button6=Checkbutton(form,variable=int_vars[5],onvalue=1,offvalue=0,command=lambda:add_sauce(mushroom)).place(x=450,y=440)
 
 
 sauce_3=Image.open('images/cheese.png')
@@ -160,9 +160,9 @@ label7=Label(form,image=cheese_image).place(x=500,y=400)
 cheese=Cheese(selected_sauce)
 
 cheese_description=Label(form,text=cheese.description,font='Times 12 italic',fg='black').place(x=625,y=420)
-cheese_price=Label(form,text=cheese.price,font='Times 12 italic',fg='black').place(x=625,y=440)
+cheese_price=Label(form,text=f'{cheese.price} TL',font='Times 12 italic',fg='black').place(x=625,y=440)
 
-button7=Checkbutton(form,text=f'{cheese.price} TL',variable=int_vars[6],onvalue=1,offvalue=0,command=lambda:add_sauce(cheese)).place(x=630,y=465)
+button7=Checkbutton(form,variable=int_vars[6],onvalue=1,offvalue=0,command=lambda:add_sauce(cheese)).place(x=675,y=440)
 
 
 sauce_4=Image.open('images/meat.png')
@@ -173,10 +173,10 @@ label8=Label(form,image=meat_image).place(x=50,y=550)
 meat=Meat(selected_sauce)
 
 meat_description=Label(form,text=meat.description,font='Times 12 italic',fg='black').place(x=175,y=570)
-meat_price=Label(form,text=meat.price,font='Times 12 italic',fg='black').place(x=175,y=590)
+meat_price=Label(form,text=f'{meat.price} TL',font='Times 12 italic',fg='black').place(x=175,y=590)
 
 
-button8=Checkbutton(form,text=f'{meat.price} TL',variable=int_vars[7],onvalue=1,offvalue=0,command=lambda:add_sauce(meat)).place(x=180,y=615)
+button8=Checkbutton(form,variable=int_vars[7],onvalue=1,offvalue=0,command=lambda:add_sauce(meat)).place(x=225,y=590)
 
 sauce_5=Image.open('images/onion.png')
 sauce5_resize=sauce_5.resize((120,80))
@@ -186,10 +186,10 @@ label9=Label(form,image=onion_image).place(x=275,y=550)
 onion=Onion(selected_sauce)
 
 onion_description=Label(form,text=onion.description,font='Times 12 italic',fg='black').place(x=400,y=570)
-onion_price=Label(form,text=onion.price,font='Times 12 italic',fg='black').place(x=400,y=590)
+onion_price=Label(form,text=f'{onion.price} TL',font='Times 12 italic',fg='black').place(x=400,y=590)
 
 
-button9=Checkbutton(form,text=f'{onion.price} TL',variable=int_vars[8],onvalue=1,offvalue=0,command=lambda:add_sauce(onion)).place(x=405,y=615)
+button9=Checkbutton(form,variable=int_vars[8],onvalue=1,offvalue=0,command=lambda:add_sauce(onion)).place(x=450,y=590)
 
 sauce_6=Image.open('images/corn.png')
 sauce6_resize=sauce_6.resize((120,80))
@@ -199,11 +199,11 @@ label10=Label(form,image=corn_image).place(x=500,y=550)
 corn=Corn(selected_sauce)
 
 corn_description=Label(form,text=corn.description,font='Times 12 italic',fg='black').place(x=625,y=570)
-corn_price=Label(form,text=corn.price,font='Times 12 italic',fg='black').place(x=625,y=590)
+corn_price=Label(form,text=f'{corn.price} TL',font='Times 12 italic',fg='black').place(x=625,y=590)
 
 
 
-button10=Checkbutton(form,text=f'{corn.price} TL',variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn)).place(x=630,y=615)
+button10=Checkbutton(form,variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn)).place(x=675,y=590)
 
 
 
