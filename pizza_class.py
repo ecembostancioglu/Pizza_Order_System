@@ -1,6 +1,6 @@
 class Pizza:
 
-    def __init__(self,description,price):
+    def __init__(self,description=None,price=None):
         self.description=description
         self.price=price
     
