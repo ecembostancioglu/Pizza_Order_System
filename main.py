@@ -41,14 +41,13 @@ label1=Label(form,image=pizza1).place(x=40,y=80)
 classic=ClassicPizza()
 
 pizza1_description=Label(form,text=classic.description,font='Times 12 italic',fg='black').place(x=160,y=125)
-pizza1_price=Label(form,text=classic.price,font='Times 12 italic',fg='black').place(x=160,y=150)
+pizza1_price=Label(form,text=f'{classic.price} TL',font='Times 12 italic',fg='black').place(x=160,y=150)
 
-var1 = IntVar()
-var2 = IntVar()
-var3 = IntVar()
-var4 = IntVar()
 
-button1=Checkbutton(form,text='Ekle',variable=var1,onvalue=1,offvalue=0,command=lambda:select_pizza(classic)).place(x=220,y=150)
+int_vars = [IntVar() for i in range(10)]
+
+
+button1=Checkbutton(form,variable=int_vars[0],onvalue=1,offvalue=0,command=lambda:select_pizza(classic)).place(x=220,y=150)
 
 
 margherita_pizza=Image.open('images/margherita_pizza.png')
@@ -59,9 +58,9 @@ label2=Label(form,image=pizza2).place(x=410,y=80)
 margherita=MargheritaPizza()
 
 pizza2_description=Label(form,text=margherita.description,font='Times 12 italic',fg='black').place(x=530,y=125)
-pizza2_price=Label(form,text=margherita.price,font='Times 12 italic',fg='black').place(x=530,y=150)
+pizza2_price=Label(form,text=f'{margherita.price} TL',font='Times 12 italic',fg='black').place(x=530,y=150)
 
-button2=Checkbutton(form,text='Ekle',variable=var2,onvalue=1,offvalue=0,command=lambda:select_pizza(margherita)).place(x=590,y=150)
+button2=Checkbutton(form,variable=int_vars[1],onvalue=1,offvalue=0,command=lambda:select_pizza(margherita)).place(x=590,y=150)
 
 
 base_pizza=Image.open('images/base_pizza.png')
@@ -72,9 +71,9 @@ label3=Label(form,image=pizza3).place(x=40,y=220)
 base=BasePizza()
 
 pizza3_description=Label(form,text=base.description,font='Times 12 italic',fg='black').place(x=160,y=265)
-pizza3_price=Label(form,text=base.price,font='Times 12 italic',fg='black').place(x=160,y=290)
+pizza3_price=Label(form,text=f'{base.price} TL',font='Times 12 italic',fg='black').place(x=160,y=290)
 
-button3=Checkbutton(form,text='Ekle',variable=var3,onvalue=1,offvalue=0,command=lambda:select_pizza(base)).place(x=220,y=290)
+button3=Checkbutton(form,variable=int_vars[2],onvalue=1,offvalue=0,command=lambda:select_pizza(base)).place(x=220,y=290)
 
 
 turkish_pizza=Image.open('images/turkish_pizza.png')
@@ -85,15 +84,15 @@ label4=Label(form,image=pizza4).place(x=410,y=220)
 turkish=TurkishPizza()
 
 pizza4_description=Label(form,text=turkish.description,font='Times 12 italic',fg='black').place(x=530,y=265)
-pizza4_price=Label(form,text=turkish.price,font='Times 12 italic',fg='black').place(x=530,y=290)
+pizza4_price=Label(form,text=f'{turkish.price} TL',font='Times 12 italic',fg='black').place(x=530,y=290)
 
-button4=Checkbutton(form,text='Ekle',variable=var4,onvalue=1,offvalue=0,command=lambda:select_pizza(turkish)).place(x=590,y=290)
+button4=Checkbutton(form,variable=int_vars[3],onvalue=1,offvalue=0,command=lambda:select_pizza(turkish)).place(x=590,y=290)
 
 selected_pizza=Pizza()
 
 
 def select_pizza(selected_pizza):
-    if var1.get()==1 | var2.get()==1 | var3.get()==1 | var4.get()==1:
+    if int_vars[0].get()==1 or int_vars[1].get()==1 or int_vars[2].get()==1 or int_vars[3].get()==1:
         if selected_pizza==classic:
             print(str(selected_pizza.get_description()), int(selected_pizza.get_cost()))
         elif selected_pizza==margherita:
@@ -135,7 +134,7 @@ olive=Olive(selected_sauce)
 olive_description=Label(form,text=olive.description,font='Times 12 italic',fg='black').place(x=175,y=420)
 olive_price=Label(form,text=olive.price,font='Times 12 italic',fg='black').place(x=175,y=440)
 
-button5=Button(form,text='+',background='green',padx=10,
+button5=Checkbutton(form,text=f'{olive.price} TL',variable=int_vars[4],onvalue=1,offvalue=0,
                command=lambda:add_sauce(olive)).place(x=180,y=465)
 
 sauce_2=Image.open('images/mushroom.png')
@@ -149,7 +148,7 @@ mushroom=Mushroom(selected_sauce)
 mushroom_description=Label(form,text=mushroom.description,font='Times 12 italic',fg='black').place(x=400,y=420)
 mushroom_price=Label(form,text=mushroom.price,font='Times 12 italic',fg='black').place(x=400,y=440)
 
-button6=Button(form,text='+',background='green',padx=10,command=lambda:add_sauce(mushroom)).place(x=405,y=465)
+button6=Checkbutton(form,text=f'{mushroom.price} TL',variable=int_vars[5],onvalue=1,offvalue=0,command=lambda:add_sauce(mushroom)).place(x=405,y=465)
 
 
 sauce_3=Image.open('images/cheese.png')
@@ -163,7 +162,7 @@ cheese=Cheese(selected_sauce)
 cheese_description=Label(form,text=cheese.description,font='Times 12 italic',fg='black').place(x=625,y=420)
 cheese_price=Label(form,text=cheese.price,font='Times 12 italic',fg='black').place(x=625,y=440)
 
-button7=Button(form,text='+',background='green',padx=10,command=lambda:add_sauce(cheese)).place(x=630,y=465)
+button7=Checkbutton(form,text=f'{cheese.price} TL',variable=int_vars[6],onvalue=1,offvalue=0,command=lambda:add_sauce(cheese)).place(x=630,y=465)
 
 
 sauce_4=Image.open('images/meat.png')
@@ -177,7 +176,7 @@ meat_description=Label(form,text=meat.description,font='Times 12 italic',fg='bla
 meat_price=Label(form,text=meat.price,font='Times 12 italic',fg='black').place(x=175,y=590)
 
 
-button8=Button(form,text='+',background='green',padx=10,command=lambda:add_sauce(meat)).place(x=180,y=615)
+button8=Checkbutton(form,text=f'{meat.price} TL',variable=int_vars[7],onvalue=1,offvalue=0,command=lambda:add_sauce(meat)).place(x=180,y=615)
 
 sauce_5=Image.open('images/onion.png')
 sauce5_resize=sauce_5.resize((120,80))
@@ -190,7 +189,7 @@ onion_description=Label(form,text=onion.description,font='Times 12 italic',fg='b
 onion_price=Label(form,text=onion.price,font='Times 12 italic',fg='black').place(x=400,y=590)
 
 
-button9=Button(form,text='+',background='green',padx=10,command=lambda:add_sauce(onion)).place(x=405,y=615)
+button9=Checkbutton(form,text=f'{onion.price} TL',variable=int_vars[8],onvalue=1,offvalue=0,command=lambda:add_sauce(onion)).place(x=405,y=615)
 
 sauce_6=Image.open('images/corn.png')
 sauce6_resize=sauce_6.resize((120,80))
@@ -204,7 +203,7 @@ corn_price=Label(form,text=corn.price,font='Times 12 italic',fg='black').place(x
 
 
 
-button9=Button(form,text='+',background='green',padx=10,command=lambda:add_sauce(corn)).place(x=630,y=615)
+button10=Checkbutton(form,text=f'{corn.price} TL',variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn)).place(x=630,y=615)
 
 
 
