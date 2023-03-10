@@ -1,6 +1,6 @@
 class Pizza:
 
-    def __init__(self,description=None,price=None):
+    def __init__(self,description=None,price=0):
         self.description=description
         self.price=price
     
@@ -9,4 +9,4 @@ class Pizza:
         return self.description
     
     def get_cost(self):
-        return self.price
+        return self.price if self.price is not None else 0

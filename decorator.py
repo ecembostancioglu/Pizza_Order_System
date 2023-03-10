@@ -11,7 +11,10 @@ class Decorator(Pizza):
     
 
     def get_cost(self):
-       return str(Pizza.get_cost(self))
+       if self.price is not None:
+          return self.component.get_cost() + (self.price) #str(Pizza.get_cost(self))
+       else:
+          return 0
 
 
     def get_description(self):

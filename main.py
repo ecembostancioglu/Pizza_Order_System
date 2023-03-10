@@ -90,11 +90,19 @@ button4=Checkbutton(form,variable=int_vars[3],onvalue=1,offvalue=0,command=lambd
 
 selected_pizza=Pizza()
 
+global pizza_price
+pizza_price=0
 
 def select_pizza(selected_pizza):
+
+    global pizza_price
+
     if int_vars[0].get()==1 or int_vars[1].get()==1 or int_vars[2].get()==1 or int_vars[3].get()==1:
+        pizza_price = int(selected_pizza.get_cost())
+        text1.config(text=f'Sepet Tutarı: {pizza_price} TL')
         if selected_pizza==classic:
             print(str(selected_pizza.get_description()), int(selected_pizza.get_cost()))
+            pizza_price=int(selected_pizza.get_cost())
         elif selected_pizza==margherita:
             print(str(selected_pizza.get_description()),int(selected_pizza.get_cost()))
         elif selected_pizza==base:
@@ -109,19 +117,28 @@ pizza_sauce_selection=Label(form,text='Lütfen Bir Pizza Sosu Seçiniz',font='Ti
 selected_sauce=Decorator(selected_pizza,selected_pizza.get_description(),selected_pizza.get_cost())
 
 def add_sauce(selected_sauce):
-   if selected_sauce==olive:
+
+    global pizza_price
+
+    sauce_price = int(selected_sauce.get_cost())
+    total_price=pizza_price+sauce_price
+    pizza_price = total_price
+
+    print(f'Pizza fiyat:{pizza_price}')
+    text1.config(text=f'Sepet Tutarı: {total_price} TL')
+    if selected_sauce==olive:
        print(selected_sauce.get_description(),selected_sauce.get_cost())
-   elif selected_sauce==mushroom:
+    elif selected_sauce==mushroom:
        print(selected_sauce.get_description(),selected_sauce.get_cost())
-   elif selected_sauce==cheese:
+    elif selected_sauce==cheese:
        print(selected_sauce.get_description(),selected_sauce.get_cost())
-   elif selected_sauce==meat:
+    elif selected_sauce==meat:
        print(selected_sauce.get_description(),selected_sauce.get_cost())
-   elif selected_sauce==onion:
+    elif selected_sauce==onion:
        print(selected_sauce.get_description(),selected_sauce.get_cost())
-   elif selected_sauce==corn:
+    elif selected_sauce==corn:
        print(selected_sauce.get_description(),selected_sauce.get_cost())
-   else:
+    else:
        print('Lütfen bir seçim yapınız')
 
 sauce_1=Image.open('images/olive.png')
@@ -177,7 +194,6 @@ meat_price=Label(form,text=f'{meat.price} TL',font='Times 12 italic',fg='black')
 
 
 button8=Checkbutton(form,variable=int_vars[7],onvalue=1,offvalue=0,command=lambda:add_sauce(meat)).place(x=225,y=590)
-
 sauce_5=Image.open('images/onion.png')
 sauce5_resize=sauce_5.resize((120,80))
 onion_image=ImageTk.PhotoImage(sauce5_resize)
@@ -202,8 +218,11 @@ corn_description=Label(form,text=corn.description,font='Times 12 italic',fg='bla
 corn_price=Label(form,text=f'{corn.price} TL',font='Times 12 italic',fg='black').place(x=625,y=590)
 
 
-
 button10=Checkbutton(form,variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn)).place(x=675,y=590)
+
+text1=Label(form)
+#text1.config(text='Toplam fiyat: {}'.format(pizza_price+sauce_price))
+text1.place(x=300,y=680)
 
 
 
