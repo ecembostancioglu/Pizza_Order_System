@@ -240,13 +240,11 @@ corn_price=Label(form,text=f'{corn.price} TL',font='Times 12 italic',fg='black',
 button10=Checkbutton(form,variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn),bg='#F8F4EA').place(x=675,y=590)
 
 
-
-
 amount_text=Label(form,text=f'Sepet Tutarı:',font='Times 12 italic',fg='black',bg='#F8F4EA')
 amount_text.place(x=300,y=680)
 
 summary_text=Label(form,text=f'Sepet:',font='Times 12 italic',fg='black',bg='#F8F4EA')
-summary_text.place(x=30,y=680)
+summary_text.place(x=300,y=640)
 
 def to_second_page(value,desc):
     global total_var
@@ -255,8 +253,9 @@ def to_second_page(value,desc):
     second_page.deiconify()
     total_var=desc
     basket_price=value
-    Label(second_page, text=f"Toplam:{desc}",bg='#F8F4EA').place(x=40,y=280)
-    Label(second_page, text=f"Toplam:{value} TL",bg='#F8F4EA').place(x=40,y=280)
+    Label(second_page, text=f"{desc}",bg='#F8F4EA').place(x=400,y=240)
+    Label(second_page, text=f"{value} TL",bg='#F8F4EA').place(x=400,y=280)
+
 
     second_page.mainloop()
 
@@ -272,7 +271,7 @@ second_page.geometry('750x750+450+50')
 second_page.configure(background='#F8F4EA')
 second_page.resizable(False,False)
 
-payment=Label(second_page,text='Ödemeyi Yapınız',font='Times 12 italic',bg='#F8F4EA').pack()
+payment=Label(second_page,text='Ödemeyi Yapınız',fg='darkred',font='Times 16 bold italic',bg='#F8F4EA').pack()
 
 
 name_var=StringVar()
@@ -284,27 +283,44 @@ basket_price=StringVar()
 
 
 name_label=Label(second_page,text=f'Adınız:',bg='#F8F4EA')
-name_label.place(x=40,y=80)
+name_label.place(x=200,y=80)
 name_label.config(text=f'Adınız:')
-name_entry=Entry(second_page,bg='#F8F4EA',textvariable=name_var).place(x=140,y=80)
+name_entry=Entry(second_page,bg='#F8F4EA',textvariable=name_var).place(x=400,y=80)
 
 id_label=Label(second_page,text=f'Tc Kimlik No:',bg='#F8F4EA')
-id_label.place(x=40,y=120)
+id_label.place(x=200,y=120)
 id_label.config(text=f'Tc Kimlik No:')
-id_entry=Entry(second_page,bg='#F8F4EA',textvariable=id_var).place(x=140,y=120)
+id_entry=Entry(second_page,bg='#F8F4EA',textvariable=id_var).place(x=400,y=120)
 
 credit_label=Label(second_page,text=f'Kredi Kartı No:',bg='#F8F4EA')
-credit_label.place(x=40,y=160)
+credit_label.place(x=200,y=160)
 credit_label.config(text=f'Kredi Kartı No:')
-credit_entry=Entry(second_page,bg='#F8F4EA',textvariable=credit_var).place(x=140,y=160)
+credit_entry=Entry(second_page,bg='#F8F4EA',textvariable=credit_var).place(x=400,y=160)
 
 password_label=Label(second_page,text=f'Kredi Kartı Şifresi:',bg='#F8F4EA')
-password_label.place(x=40,y=240)
+password_label.place(x=200,y=200)
 password_label.config(text=f'Kredi Kartı Şifresi:')
-password_entry=Entry(second_page,bg='#F8F4EA',textvariable=password_var,show = '*').place(x=140,y=240)
+password_entry=Entry(second_page,bg='#F8F4EA',textvariable=password_var,show = '*').place(x=400,y=200)
 
-payment_button=Button(second_page,text='Öde',bg='#F8F4EA',
-                      command=lambda:write_csv(total_var,basket_price)).place(x=400,y=320)
+Label(second_page, text='Pizza ve Malzemeler:',bg='#F8F4EA').place(x=200,y=240)
+Label(second_page, text='Toplam:',bg='#F8F4EA').place(x=200,y=280)
+
+
+payment_button=Button(second_page,text='Öde',bg='#F8F4EA',height=1,width=10,
+                      command=lambda:write_csv(total_var,basket_price)).place(x=350,y=360)
+
+
+order1=Image.open('images/pizza.png')
+order1_resize=order1.resize((120,120))
+order1_image=ImageTk.PhotoImage(order1_resize)
+
+order2=Image.open('images/cook.png')
+order2_resize=order2.resize((120,120))
+order2_image=ImageTk.PhotoImage(order2_resize)
+
+order_label=Label(second_page,text='',font='Times 12 italic',bg='#F8F4EA')
+order_label.place(x=300,y=400)
+
 
 date=datetime.now()
 now_date=date.strftime('%Y-%m-%d %H:%M')
@@ -315,12 +331,10 @@ def write_csv(total,price):
    id=id_var.get()
    credit=credit_var.get()
    password=password_var.get()
-   name_entry=Entry(second_page,bg='#F8F4EA',textvariable=name).place(x=140,y=80)
-   id_entry=Entry(second_page,bg='#F8F4EA',textvariable=id).place(x=140,y=120)
-   credit_entry=Entry(second_page,bg='#F8F4EA',textvariable=credit).place(x=140,y=160)
-   password_entry=Entry(second_page,bg='#F8F4EA',textvariable=password,show = '*').place(x=140,y=240)
-
-   #data_rows=([f'{name}',f'{id}',f'{credit}',f'{password}',f'{total}',f'{price}',f'{now_date}'])
+   #name_entry=Entry(second_page,bg='#F8F4EA',textvariable=name).place(x=140,y=80)
+   #id_entry=Entry(second_page,bg='#F8F4EA',textvariable=id).place(x=400,y=120)
+   #credit_entry=Entry(second_page,bg='#F8F4EA',textvariable=credit).place(x=400,y=160)
+   #password_entry=Entry(second_page,bg='#F8F4EA',textvariable=password,show = '*').place(x=400,y=200)
 
    with open('Order_Database.csv','w') as my_file:
       
@@ -331,6 +345,14 @@ def write_csv(total,price):
       writer.writerow(
                 {"Ad": name, "TC Kimlik": id, "Kredi Karti No": credit, "Kredi Karti Sifre": password, "Siparis Aciklama": total, 
                  "Siparis Tutari": price,"Siparis Zamani":now_date})
+      order_label.config(text='Siparişiniz Hazırlanıyor...')
+      order1_label=Label(second_page,image=order1_image,bg='#F8F4EA')
+      order1_label.place(x=150,y=320)
+      order2_label=Label(second_page,image=order2_image,bg='#F8F4EA')
+      order2_label.place(x=500,y=320)
+
+      
+
 
 
 form.mainloop()
