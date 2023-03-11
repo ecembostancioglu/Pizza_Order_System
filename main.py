@@ -93,17 +93,25 @@ selected_pizza=Pizza()
 
 global pizza_price
 pizza_price=0
+global pizza_desc
+pizza_desc=''
 
 def select_pizza(selected_pizza):
 
     global pizza_price
+    global pizza_desc
 
     if int_vars[0].get()==1 or int_vars[1].get()==1 or int_vars[2].get()==1 or int_vars[3].get()==1:
         pizza_price = int(selected_pizza.get_cost())
-        text1.config(text=f'Sepet Tutarı: {pizza_price} TL')
+        pizza_desc=str(selected_pizza.get_description())
+        amount_text.config(text=f'Sepet Tutarı: {pizza_price} TL')
+        summary_text.config(text=f'Sepet: {pizza_desc}, ')
+
+        pizza_price=int(selected_pizza.get_cost())
+        pizza_desc=str(selected_pizza.get_description())
+        
         if selected_pizza==classic:
             print(str(selected_pizza.get_description()), int(selected_pizza.get_cost()))
-            pizza_price=int(selected_pizza.get_cost())
         elif selected_pizza==margherita:
             print(str(selected_pizza.get_description()),int(selected_pizza.get_cost()))
         elif selected_pizza==base:
@@ -120,13 +128,20 @@ selected_sauce=Decorator(selected_pizza,selected_pizza.get_description(),selecte
 def add_sauce(selected_sauce):
 
     global pizza_price
+    global pizza_desc
 
     sauce_price = int(selected_sauce.get_cost())
-    total_price=pizza_price+sauce_price
+    total_price=pizza_price + sauce_price
     pizza_price = total_price
 
+    sauce_desc=str(selected_sauce.get_description())
+    total_desc=pizza_desc + ',' + ' ' + sauce_desc
+    pizza_desc=total_desc
+
     print(f'Pizza fiyat:{pizza_price}')
-    text1.config(text=f'Sepet Tutarı: {total_price} TL')
+    print('Pizza açıklaması: {pizza_desc}')
+    amount_text.config(text=f'Sepet Tutarı: {total_price} TL')
+    summary_text.config(text=f'Sepet: {pizza_desc}')
     if selected_sauce==olive:
        print(selected_sauce.get_description(),selected_sauce.get_cost())
     elif selected_sauce==mushroom:
@@ -221,26 +236,30 @@ corn_price=Label(form,text=f'{corn.price} TL',font='Times 12 italic',fg='black',
 
 button10=Checkbutton(form,variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn),bg='#F8F4EA').place(x=675,y=590)
 
-text1=Label(form,text=f'Sepet Tutarı:',font='Times 12 italic',fg='black',bg='#F8F4EA')
-text1.place(x=300,y=680)
 
 
 
-def to_second_page(value):
-    global pizza_price
+amount_text=Label(form,text=f'Sepet Tutarı:',font='Times 12 italic',fg='black',bg='#F8F4EA')
+amount_text.place(x=300,y=680)
+
+summary_text=Label(form,text=f'Sepet:',font='Times 12 italic',fg='black',bg='#F8F4EA')
+summary_text.place(x=30,y=680)
+
+def to_second_page(value,desc):
     form.withdraw()
     second_page.deiconify()
-    Label(second_page, text=f"Gönderilen değer: {value}").pack()
+    Label(second_page, text=f"Gönderilen değer: {value}",bg='#F8F4EA').pack()
+    Label(second_page, text=f"Gönderilen açıklama: {desc}",bg='#F8F4EA').pack()
+
     second_page.mainloop()
 
 
-button11=Button(form,text='Ödeme Yap',command=lambda:to_second_page(pizza_price),bg='#F8F4EA').place(x=650,y=680)
+button11=Button(form,text='Ödeme Yap',command=lambda:to_second_page(pizza_price,pizza_desc),bg='#F8F4EA').place(x=650,y=680)
 
 second_page=Toplevel(form)
 second_page.withdraw()
 
 
-second_page = Tk()
 second_page.title('Ödeme Sayfası')
 second_page.geometry('750x750+450+50')
 second_page.configure(background='#F8F4EA')
