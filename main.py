@@ -307,7 +307,7 @@ payment_button=Button(second_page,text='Öde',bg='#F8F4EA',
                       command=lambda:write_csv(total_var,basket_price)).place(x=400,y=320)
 
 date=datetime.now()
-now_date=date.strftime('%c')
+now_date=date.strftime('%Y-%m-%d %H:%M')
 
 
 def write_csv(total,price):
@@ -320,14 +320,17 @@ def write_csv(total,price):
    credit_entry=Entry(second_page,bg='#F8F4EA',textvariable=credit).place(x=140,y=160)
    password_entry=Entry(second_page,bg='#F8F4EA',textvariable=password,show = '*').place(x=140,y=240)
 
-   data=[['Ad','TC Kimlik','Kredi Karti No','Kredi Karti Sifre','Siparis Aciklama','Siparis Tutari','Siparis Zamani'],
-    [f'{name}',f'{id}',f'{credit}',f'{password}',f'{total}',
-     f'{total}',f'{price}']]
+   #data_rows=([f'{name}',f'{id}',f'{credit}',f'{password}',f'{total}',f'{price}',f'{now_date}'])
 
-   with open('order_database.csv', mode='w',newline='') as my_file:
-      writer=csv.writer(my_file,delimiter=',')
-      writer.writerows(data)
+   with open('Order_Database.csv','w') as my_file:
+      
+      field_names=['Ad','TC Kimlik','Kredi Karti No','Kredi Karti Sifre','Siparis Aciklama','Siparis Tutari','Siparis Zamani']
 
+      writer=csv.DictWriter(my_file,fieldnames=field_names)
+      writer.writeheader()
+      writer.writerow(
+                {"Ad": name, "TC Kimlik": id, "Kredi Karti No": credit, "Kredi Karti Sifre": password, "Siparis Aciklama": total, 
+                 "Siparis Tutari": price,"Siparis Zamani":now_date})
 
 
 form.mainloop()
