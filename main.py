@@ -1,5 +1,8 @@
 from tkinter import *
 from PIL import Image,ImageTk
+import csv
+from datetime import datetime
+
 
 from decorator import Decorator
 from pizza_class import Pizza
@@ -246,15 +249,19 @@ summary_text=Label(form,text=f'Sepet:',font='Times 12 italic',fg='black',bg='#F8
 summary_text.place(x=30,y=680)
 
 def to_second_page(value,desc):
+    global total_var
+    global basket_price
     form.withdraw()
     second_page.deiconify()
-    Label(second_page, text=f"Gönderilen değer: {value}",bg='#F8F4EA').pack()
-    Label(second_page, text=f"Gönderilen açıklama: {desc}",bg='#F8F4EA').pack()
+    total_var=desc
+    basket_price=value
+    Label(second_page, text=f"Toplam:{desc}",bg='#F8F4EA').place(x=40,y=280)
+    Label(second_page, text=f"Toplam:{value} TL",bg='#F8F4EA').place(x=40,y=280)
 
     second_page.mainloop()
 
-
 button11=Button(form,text='Ödeme Yap',command=lambda:to_second_page(pizza_price,pizza_desc),bg='#F8F4EA').place(x=650,y=680)
+
 
 second_page=Toplevel(form)
 second_page.withdraw()
@@ -266,6 +273,61 @@ second_page.configure(background='#F8F4EA')
 second_page.resizable(False,False)
 
 payment=Label(second_page,text='Ödemeyi Yapınız',font='Times 12 italic',bg='#F8F4EA').pack()
+
+
+name_var=StringVar()
+id_var=StringVar()
+credit_var=StringVar()
+password_var=StringVar()
+total_var=StringVar()
+basket_price=StringVar()
+
+
+name_label=Label(second_page,text=f'Adınız:',bg='#F8F4EA')
+name_label.place(x=40,y=80)
+name_label.config(text=f'Adınız:')
+name_entry=Entry(second_page,bg='#F8F4EA',textvariable=name_var).place(x=140,y=80)
+
+id_label=Label(second_page,text=f'Tc Kimlik No:',bg='#F8F4EA')
+id_label.place(x=40,y=120)
+id_label.config(text=f'Tc Kimlik No:')
+id_entry=Entry(second_page,bg='#F8F4EA',textvariable=id_var).place(x=140,y=120)
+
+credit_label=Label(second_page,text=f'Kredi Kartı No:',bg='#F8F4EA')
+credit_label.place(x=40,y=160)
+credit_label.config(text=f'Kredi Kartı No:')
+credit_entry=Entry(second_page,bg='#F8F4EA',textvariable=credit_var).place(x=140,y=160)
+
+password_label=Label(second_page,text=f'Kredi Kartı Şifresi:',bg='#F8F4EA')
+password_label.place(x=40,y=240)
+password_label.config(text=f'Kredi Kartı Şifresi:')
+password_entry=Entry(second_page,bg='#F8F4EA',textvariable=password_var,show = '*').place(x=140,y=240)
+
+payment_button=Button(second_page,text='Öde',bg='#F8F4EA',
+                      command=lambda:write_csv(total_var,basket_price)).place(x=400,y=320)
+
+date=datetime.now()
+now_date=date.strftime('%c')
+
+
+def write_csv(total,price):
+   name=name_var.get()
+   id=id_var.get()
+   credit=credit_var.get()
+   password=password_var.get()
+   name_entry=Entry(second_page,bg='#F8F4EA',textvariable=name).place(x=140,y=80)
+   id_entry=Entry(second_page,bg='#F8F4EA',textvariable=id).place(x=140,y=120)
+   credit_entry=Entry(second_page,bg='#F8F4EA',textvariable=credit).place(x=140,y=160)
+   password_entry=Entry(second_page,bg='#F8F4EA',textvariable=password,show = '*').place(x=140,y=240)
+
+   data=[['Ad','TC Kimlik','Kredi Karti No','Kredi Karti Sifre','Siparis Aciklama','Siparis Tutari','Siparis Zamani'],
+    [f'{name}',f'{id}',f'{credit}',f'{password}',f'{total}',
+     f'{total}',f'{price}']]
+
+   with open('order_database.csv', mode='w',newline='') as my_file:
+      writer=csv.writer(my_file,delimiter=',')
+      writer.writerows(data)
+
 
 
 form.mainloop()
