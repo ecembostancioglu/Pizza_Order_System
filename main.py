@@ -220,10 +220,23 @@ corn_price=Label(form,text=f'{corn.price} TL',font='Times 12 italic',fg='black')
 
 button10=Checkbutton(form,variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn)).place(x=675,y=590)
 
-text1=Label(form)
-#text1.config(text='Toplam fiyat: {}'.format(pizza_price+sauce_price))
+text1=Label(form,text=f'Sepet Tutarı:',font='Times 12 italic',fg='black')
 text1.place(x=300,y=680)
 
+
+
+def to_second_page(value):
+    global pizza_price
+    form.withdraw()
+    second_page.deiconify()
+    Label(second_page, text=f"Gönderilen değer: {value}").pack()
+    second_page.mainloop()
+
+
+button11=Button(form,text='Ödeme Yap',command=lambda:to_second_page(pizza_price)).place(x=650,y=680)
+
+second_page=Toplevel(form)
+second_page.withdraw()
 
 
 form.mainloop()
