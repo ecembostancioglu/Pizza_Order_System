@@ -23,11 +23,12 @@ main()
 
 form = Tk()
 form.title('Pizza Dünyası')
+form.configure(background='#F8F4EA')
 form.geometry('750x750+450+50')
 form.resizable(False,False)
 
-menu_title=Label(form,text='Pizza Dünyasına Hoşgeldiniz',fg='darkred',font='Times 16 bold italic')
-pizza_selection=Label(form,text='Lütfen Bir Pizza Tabanı Seçiniz',font='Times 12 italic')
+menu_title=Label(form,text='Pizza Dünyasına Hoşgeldiniz',fg='darkred',font='Times 16 bold italic',bg='#F8F4EA')
+pizza_selection=Label(form,text='Lütfen Bir Pizza Tabanı Seçiniz',font='Times 12 italic',bg='#F8F4EA')
 
 
 menu_title.pack()
@@ -36,57 +37,57 @@ pizza_selection.pack()
 classic_pizza=Image.open('images/classic_pizza.png')
 pizza1_resize=classic_pizza.resize((110,110))
 pizza1=ImageTk.PhotoImage(pizza1_resize)
-label1=Label(form,image=pizza1).place(x=40,y=80)
+label1=Label(form,image=pizza1,bg='#F8F4EA').place(x=40,y=80)
 
 classic=ClassicPizza()
 
-pizza1_description=Label(form,text=classic.description,font='Times 12 italic',fg='black').place(x=160,y=125)
-pizza1_price=Label(form,text=f'{classic.price} TL',font='Times 12 italic',fg='black').place(x=160,y=150)
+pizza1_description=Label(form,text=classic.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=160,y=125)
+pizza1_price=Label(form,text=f'{classic.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=160,y=150)
 
 
 int_vars = [IntVar() for i in range(10)]
 
 
-button1=Checkbutton(form,variable=int_vars[0],onvalue=1,offvalue=0,command=lambda:select_pizza(classic)).place(x=220,y=150)
+button1=Checkbutton(form,variable=int_vars[0],onvalue=1,offvalue=0,command=lambda:select_pizza(classic),bg='#F8F4EA').place(x=220,y=150)
 
 
 margherita_pizza=Image.open('images/margherita_pizza.png')
 pizza2_resize=margherita_pizza.resize((110,110))
 pizza2=ImageTk.PhotoImage(pizza2_resize)
-label2=Label(form,image=pizza2).place(x=410,y=80)
+label2=Label(form,image=pizza2,bg='#F8F4EA').place(x=410,y=80)
 
 margherita=MargheritaPizza()
 
-pizza2_description=Label(form,text=margherita.description,font='Times 12 italic',fg='black').place(x=530,y=125)
-pizza2_price=Label(form,text=f'{margherita.price} TL',font='Times 12 italic',fg='black').place(x=530,y=150)
+pizza2_description=Label(form,text=margherita.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=530,y=125)
+pizza2_price=Label(form,text=f'{margherita.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=530,y=150)
 
-button2=Checkbutton(form,variable=int_vars[1],onvalue=1,offvalue=0,command=lambda:select_pizza(margherita)).place(x=590,y=150)
+button2=Checkbutton(form,variable=int_vars[1],onvalue=1,offvalue=0,command=lambda:select_pizza(margherita),bg='#F8F4EA').place(x=590,y=150)
 
 
 base_pizza=Image.open('images/base_pizza.png')
 pizza3_resize=base_pizza.resize((110,110))
 pizza3=ImageTk.PhotoImage(pizza3_resize)
-label3=Label(form,image=pizza3).place(x=40,y=220)
+label3=Label(form,image=pizza3,bg='#F8F4EA').place(x=40,y=220)
 
 base=BasePizza()
 
-pizza3_description=Label(form,text=base.description,font='Times 12 italic',fg='black').place(x=160,y=265)
-pizza3_price=Label(form,text=f'{base.price} TL',font='Times 12 italic',fg='black').place(x=160,y=290)
+pizza3_description=Label(form,text=base.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=160,y=265)
+pizza3_price=Label(form,text=f'{base.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=160,y=290)
 
-button3=Checkbutton(form,variable=int_vars[2],onvalue=1,offvalue=0,command=lambda:select_pizza(base)).place(x=220,y=290)
+button3=Checkbutton(form,variable=int_vars[2],onvalue=1,offvalue=0,command=lambda:select_pizza(base),bg='#F8F4EA').place(x=220,y=290)
 
 
 turkish_pizza=Image.open('images/turkish_pizza.png')
 pizza4_resize=turkish_pizza.resize((110,110))
 pizza4=ImageTk.PhotoImage(pizza4_resize)
-label4=Label(form,image=pizza4).place(x=410,y=220)
+label4=Label(form,image=pizza4,bg='#F8F4EA').place(x=410,y=220)
 
 turkish=TurkishPizza()
 
-pizza4_description=Label(form,text=turkish.description,font='Times 12 italic',fg='black').place(x=530,y=265)
-pizza4_price=Label(form,text=f'{turkish.price} TL',font='Times 12 italic',fg='black').place(x=530,y=290)
+pizza4_description=Label(form,text=turkish.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=530,y=265)
+pizza4_price=Label(form,text=f'{turkish.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=530,y=290)
 
-button4=Checkbutton(form,variable=int_vars[3],onvalue=1,offvalue=0,command=lambda:select_pizza(turkish)).place(x=590,y=290)
+button4=Checkbutton(form,variable=int_vars[3],onvalue=1,offvalue=0,command=lambda:select_pizza(turkish),bg='#F8F4EA').place(x=590,y=290)
 
 selected_pizza=Pizza()
 
@@ -112,7 +113,7 @@ def select_pizza(selected_pizza):
         else:
             print('Lütfen bir seçim yapınız')
 
-pizza_sauce_selection=Label(form,text='Lütfen Bir Pizza Sosu Seçiniz',font='Times 12 italic').place(x=270,y=350)
+pizza_sauce_selection=Label(form,text='Lütfen Bir Pizza Sosu Seçiniz',font='Times 12 italic',bg='#F8F4EA').place(x=270,y=350)
 
 selected_sauce=Decorator(selected_pizza,selected_pizza.get_description(),selected_pizza.get_cost())
 
@@ -144,83 +145,83 @@ def add_sauce(selected_sauce):
 sauce_1=Image.open('images/olive.png')
 sauce1_resize=sauce_1.resize((120,80))
 olive_image=ImageTk.PhotoImage(sauce1_resize)
-label5=Label(form,image=olive_image).place(x=50,y=400)
+label5=Label(form,image=olive_image,bg='#F8F4EA').place(x=50,y=400)
 
 olive=Olive(selected_sauce)
 
-olive_description=Label(form,text=olive.description,font='Times 12 italic',fg='black').place(x=175,y=420)
-olive_price=Label(form,text=f'{olive.price} TL',font='Times 12 italic',fg='black').place(x=175,y=440)
+olive_description=Label(form,text=olive.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=175,y=420)
+olive_price=Label(form,text=f'{olive.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=175,y=440)
 
 button5=Checkbutton(form,variable=int_vars[4],onvalue=1,offvalue=0,
-               command=lambda:add_sauce(olive)).place(x=225,y=440)
+               command=lambda:add_sauce(olive),bg='#F8F4EA').place(x=225,y=440)
 
 sauce_2=Image.open('images/mushroom.png')
 sauce2_resize=sauce_2.resize((120,80))
 mushroom_image=ImageTk.PhotoImage(sauce2_resize)
-label6=Label(form,image=mushroom_image).place(x=275,y=400)
+label6=Label(form,image=mushroom_image,bg='#F8F4EA').place(x=275,y=400)
 
 
 mushroom=Mushroom(selected_sauce)
 
-mushroom_description=Label(form,text=mushroom.description,font='Times 12 italic',fg='black').place(x=400,y=420)
-mushroom_price=Label(form,text=f'{mushroom.price} TL',font='Times 12 italic',fg='black').place(x=400,y=440)
+mushroom_description=Label(form,text=mushroom.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=400,y=420)
+mushroom_price=Label(form,text=f'{mushroom.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=400,y=440)
 
-button6=Checkbutton(form,variable=int_vars[5],onvalue=1,offvalue=0,command=lambda:add_sauce(mushroom)).place(x=450,y=440)
+button6=Checkbutton(form,variable=int_vars[5],onvalue=1,offvalue=0,command=lambda:add_sauce(mushroom),bg='#F8F4EA').place(x=450,y=440)
 
 
 sauce_3=Image.open('images/cheese.png')
 sauce3_resize=sauce_3.resize((120,80))
 cheese_image=ImageTk.PhotoImage(sauce3_resize)
-label7=Label(form,image=cheese_image).place(x=500,y=400)
+label7=Label(form,image=cheese_image,bg='#F8F4EA').place(x=500,y=400)
 
 
 cheese=Cheese(selected_sauce)
 
-cheese_description=Label(form,text=cheese.description,font='Times 12 italic',fg='black').place(x=625,y=420)
-cheese_price=Label(form,text=f'{cheese.price} TL',font='Times 12 italic',fg='black').place(x=625,y=440)
+cheese_description=Label(form,text=cheese.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=625,y=420)
+cheese_price=Label(form,text=f'{cheese.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=625,y=440)
 
-button7=Checkbutton(form,variable=int_vars[6],onvalue=1,offvalue=0,command=lambda:add_sauce(cheese)).place(x=675,y=440)
+button7=Checkbutton(form,variable=int_vars[6],onvalue=1,offvalue=0,command=lambda:add_sauce(cheese),bg='#F8F4EA').place(x=675,y=440)
 
 
 sauce_4=Image.open('images/meat.png')
 sauce4_resize=sauce_4.resize((120,80))
 meat_image=ImageTk.PhotoImage(sauce4_resize)
-label8=Label(form,image=meat_image).place(x=50,y=550)
+label8=Label(form,image=meat_image,bg='#F8F4EA').place(x=50,y=550)
 
 meat=Meat(selected_sauce)
 
-meat_description=Label(form,text=meat.description,font='Times 12 italic',fg='black').place(x=175,y=570)
-meat_price=Label(form,text=f'{meat.price} TL',font='Times 12 italic',fg='black').place(x=175,y=590)
+meat_description=Label(form,text=meat.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=175,y=570)
+meat_price=Label(form,text=f'{meat.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=175,y=590)
 
 
-button8=Checkbutton(form,variable=int_vars[7],onvalue=1,offvalue=0,command=lambda:add_sauce(meat)).place(x=225,y=590)
+button8=Checkbutton(form,variable=int_vars[7],onvalue=1,offvalue=0,command=lambda:add_sauce(meat),bg='#F8F4EA').place(x=225,y=590)
 sauce_5=Image.open('images/onion.png')
 sauce5_resize=sauce_5.resize((120,80))
 onion_image=ImageTk.PhotoImage(sauce5_resize)
-label9=Label(form,image=onion_image).place(x=275,y=550)
+label9=Label(form,image=onion_image,bg='#F8F4EA').place(x=275,y=550)
 
 onion=Onion(selected_sauce)
 
-onion_description=Label(form,text=onion.description,font='Times 12 italic',fg='black').place(x=400,y=570)
-onion_price=Label(form,text=f'{onion.price} TL',font='Times 12 italic',fg='black').place(x=400,y=590)
+onion_description=Label(form,text=onion.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=400,y=570)
+onion_price=Label(form,text=f'{onion.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=400,y=590)
 
 
-button9=Checkbutton(form,variable=int_vars[8],onvalue=1,offvalue=0,command=lambda:add_sauce(onion)).place(x=450,y=590)
+button9=Checkbutton(form,variable=int_vars[8],onvalue=1,offvalue=0,command=lambda:add_sauce(onion),bg='#F8F4EA').place(x=450,y=590)
 
 sauce_6=Image.open('images/corn.png')
 sauce6_resize=sauce_6.resize((120,80))
 corn_image=ImageTk.PhotoImage(sauce6_resize)
-label10=Label(form,image=corn_image).place(x=500,y=550)
+label10=Label(form,image=corn_image,bg='#F8F4EA').place(x=500,y=550)
 
 corn=Corn(selected_sauce)
 
-corn_description=Label(form,text=corn.description,font='Times 12 italic',fg='black').place(x=625,y=570)
-corn_price=Label(form,text=f'{corn.price} TL',font='Times 12 italic',fg='black').place(x=625,y=590)
+corn_description=Label(form,text=corn.description,font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=625,y=570)
+corn_price=Label(form,text=f'{corn.price} TL',font='Times 12 italic',fg='black',bg='#F8F4EA').place(x=625,y=590)
 
 
-button10=Checkbutton(form,variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn)).place(x=675,y=590)
+button10=Checkbutton(form,variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn),bg='#F8F4EA').place(x=675,y=590)
 
-text1=Label(form,text=f'Sepet Tutarı:',font='Times 12 italic',fg='black')
+text1=Label(form,text=f'Sepet Tutarı:',font='Times 12 italic',fg='black',bg='#F8F4EA')
 text1.place(x=300,y=680)
 
 
@@ -233,10 +234,19 @@ def to_second_page(value):
     second_page.mainloop()
 
 
-button11=Button(form,text='Ödeme Yap',command=lambda:to_second_page(pizza_price)).place(x=650,y=680)
+button11=Button(form,text='Ödeme Yap',command=lambda:to_second_page(pizza_price),bg='#F8F4EA').place(x=650,y=680)
 
 second_page=Toplevel(form)
 second_page.withdraw()
+
+
+second_page = Tk()
+second_page.title('Ödeme Sayfası')
+second_page.geometry('750x750+450+50')
+second_page.configure(background='#F8F4EA')
+second_page.resizable(False,False)
+
+payment=Label(second_page,text='Ödemeyi Yapınız',font='Times 12 italic',bg='#F8F4EA').pack()
 
 
 form.mainloop()
