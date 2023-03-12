@@ -144,8 +144,8 @@ def add_sauce(selected_sauce):
     pizza_desc=total_desc
 
     print(f'Pizza price:{pizza_price}')
-    amount_text.config(text=f'Sepet Tutarı: {total_price} TL')
-    summary_text.config(text=f'Sepet: {pizza_desc}')
+    amount_text.config(text=f'Basket Amount: {total_price} TL')
+    summary_text.config(text=f'Amount: {pizza_desc}')
     if selected_sauce==olive:
        print(selected_sauce.description,selected_sauce.price)
     elif selected_sauce==mushroom:
