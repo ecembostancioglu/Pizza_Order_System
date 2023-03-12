@@ -241,10 +241,10 @@ corn_price=Label(form,text=f'{corn.price} TL',font='Times 12 italic',fg='black',
 button10=Checkbutton(form,variable=int_vars[9],onvalue=1,offvalue=0,command=lambda:add_sauce(corn),bg='#F8F4EA').place(x=675,y=590)
 
 
-amount_text=Label(form,text=f'Sepet Tutarı:',font='Times 12 italic',fg='black',bg='#F8F4EA')
+amount_text=Label(form,text=f'Basket Amount:',font='Times 12 italic',fg='black',bg='#F8F4EA')
 amount_text.place(x=300,y=680)
 
-summary_text=Label(form,text=f'Sepet:',font='Times 12 italic',fg='black',bg='#F8F4EA')
+summary_text=Label(form,text=f'Amount:',font='Times 12 italic',fg='black',bg='#F8F4EA')
 summary_text.place(x=300,y=650)
 
 # Payment Button function 
@@ -268,12 +268,12 @@ second_page=Toplevel(form)
 second_page.withdraw()
 
 
-second_page.title('Ödeme Sayfası')
+second_page.title('Payment Page')
 second_page.geometry('750x750+450+50')
 second_page.configure(background='#F8F4EA')
 second_page.resizable(False,False)
 
-payment=Label(second_page,text='Ödemeyi Yapınız',fg='darkred',font='Times 16 bold italic',bg='#F8F4EA').pack()
+payment=Label(second_page,text='Make the Payment',fg='darkred',font='Times 16 bold italic',bg='#F8F4EA').pack()
 
 
 name_var=StringVar()
