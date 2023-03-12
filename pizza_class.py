@@ -1,3 +1,4 @@
+#Superclass
 class Pizza:
 
     def __init__(self,description='',price=0):
