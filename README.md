@@ -14,5 +14,6 @@ Would you like to open a pizza shop? Then this project could be your dream proje
 - import Tkinter
 - import Image
 
-![menu](https://user-images.githubusercontent.com/72046458/224567942-c1c8cf28-0033-4870-9c04-a8755fdb7ef8.png)
-![payment](https://user-images.githubusercontent.com/72046458/224567965-e9de5a19-84a9-406e-bb0f-615c0583126a.png)
+![menu3](https://user-images.githubusercontent.com/72046458/224572553-58ce7675-284b-4639-bd24-8d0eb2415dcc.png)
+![payment3](https://user-images.githubusercontent.com/72046458/224572562-854b7155-2776-4c57-928e-375104dec796.png)
+
